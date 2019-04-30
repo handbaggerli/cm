@@ -1,6 +1,5 @@
+#include <QString>
 #include <QtTest>
-
-// add necessary includes here
 
 class ClientTests : public QObject
 {
@@ -8,28 +7,20 @@ class ClientTests : public QObject
 
 public:
     ClientTests();
-    ~ClientTests();
 
-private slots:
-    void test_case1();
-
+private Q_SLOTS:
+    void testCase1();
 };
 
 ClientTests::ClientTests()
 {
-
 }
 
-ClientTests::~ClientTests()
+void ClientTests::testCase1()
 {
-
-}
-
-void ClientTests::test_case1()
-{
-
+    QVERIFY2(true, "Failure");
 }
 
 QTEST_APPLESS_MAIN(ClientTests)
 
-#include "tst_clienttests.moc"
+#include "client-tests.moc"

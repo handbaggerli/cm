@@ -2,6 +2,9 @@ QT += quick
 CONFIG += c++14
 TEMPLATE = app
 
+include(../qmake-target-platform.pri)
+include(../qmake-destination-path.pri)
+
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Refer to the documentation for the
@@ -16,13 +19,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 INCLUDEPATH += source \
         ../cm-lib/source
 
+
 SOURCES += \
         source/main.cpp \
 
 RESOURCES += \
     views.qrc
 
-LIBS += -L$$PWD/../../build-cm-Desktop_Qt_5_12_3_MinGW_64_bit-Debug/cm-lib/debug -lcm-lib
+LIBS += -L$$PWD/../binaries/$$DESTINATION_PATH -lcm-lib
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -34,3 +38,9 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DESTDIR = $$PWD/../binaries/$$DESTINATION_PATH
+OBJECTS_DIR = $$PWD/build/$$DESTINATION_PATH/.obj
+MOC_DIR = $$PWD/build/$$DESTINATION_PATH/.moc
+RCC_DIR = $$PWD/build/$$DESTINATION_PATH/.qrc
+UI_DIR = $$PWD/build/$$DESTINATION_PATH/.ui

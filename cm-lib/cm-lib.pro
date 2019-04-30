@@ -1,8 +1,10 @@
+
 #-------------------------------------------------
 #
 # Project created by QtCreator 2019-04-30T15:40:28
 #
 #-------------------------------------------------
+message(cm-lib project dir: $${PWD})
 
 QT       -= gui
 
@@ -11,6 +13,9 @@ TEMPLATE = lib
 CONFIG += c++14
 
 DEFINES += CMLIB_LIBRARY
+
+include(../qmake-target-platform.pri)
+include(../qmake-destination-path.pri)
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -38,3 +43,12 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+# DESTDIR = $$PWD/../binaries/windows/gcc/x86/debug
+message(cm-lib output dir: $${DESTDIR})
+
+DESTDIR = $$PWD/../binaries/$$DESTINATION_PATH
+OBJECTS_DIR = $$PWD/build/$$DESTINATION_PATH/.obj
+MOC_DIR = $$PWD/build/$$DESTINATION_PATH/.moc
+RCC_DIR = $$PWD/build/$$DESTINATION_PATH/.qrc
+UI_DIR = $$PWD/build/$$DESTINATION_PATH/.ui
