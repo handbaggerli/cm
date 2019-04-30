@@ -13,13 +13,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-INCLUDEPATH += source
+INCLUDEPATH += source \
+        ../cm-lib/source
 
 SOURCES += \
         source/main.cpp \
 
 RESOURCES += \
     views.qrc
+
+LIBS += -L$$PWD/../../build-cm-Desktop_Qt_5_12_3_MinGW_64_bit-Debug/cm-lib/debug -lcm-lib
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
